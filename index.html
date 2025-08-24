@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Technologies Axiomorphe — Logiciels et IA utiles</title>
+  <meta name="description" content="Développement logiciel, intégration LLM et automatisation. Montréal, Québec.">
+  <link rel="icon" href="favicon.ico">
+  <style>
+    :root { --max: 980px; --pad: 16px; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height: 1.55; color:#0a0a0a; background:#fff; }
+    header, main, footer { max-width: var(--max); margin: 0 auto; padding: var(--pad); }
+    nav { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    .brand { font-weight:700; letter-spacing:.2px; }
+    .lang { display:flex; gap:8px; }
+    .lang button { border:1px solid #ddd; padding:6px 10px; border-radius:8px; background:#fff; cursor:pointer; }
+    .lang button.active { border-color:#111; }
+    .hero { padding:56px var(--pad) 24px; }
+    h1 { margin:0 0 8px; font-size: clamp(28px, 4vw, 40px); }
+    .lead { font-size:clamp(16px, 2.2vw, 18px); color:#333; max-width: 60ch; }
+    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:16px; margin-top: 16px; }
+    .card { border:1px solid #eee; border-radius:14px; padding:16px; }
+    .cta { display:inline-block; margin-top:16px; padding:10px 14px; border-radius:10px; border:1px solid #111; background:#111; color:#fff; text-decoration:none; }
+    footer { margin-top:32px; border-top:1px solid #eee; font-size:14px; color:#444; }
+    small { color:#666; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="brand" data-i18n="brand">Technologies Axiomorphe</div>
+      <div class="lang" aria-label="Language switch">
+        <button id="frBtn" class="active" type="button">FR</button>
+        <button id="enBtn" type="button">EN</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1 data-i18n="hero_title">Logiciels clairs, IA utile.</h1>
+      <p class="lead" data-i18n="hero_sub">Développement logiciel, intégration de modèles de langage (LLM) et automatisation pour PME. Montréal, Québec.</p>
+      <a class="cta" href="mailto:contact@axiomorphe.com" data-i18n="cta">Parler à un humain</a>
+    </section>
+
+    <section class="grid" aria-label="Services">
+      <div class="card">
+        <h3 data-i18n="s1_t">Développement sur mesure</h3>
+        <p data-i18n="s1_d">Applications web et APIs robustes. Pile moderne, sécurité de base incluse.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="s2_t">LLM et agents</h3>
+        <p data-i18n="s2_d">Intégration LLM pour recherche, résumé, assistants internes et flux métier.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="s3_t">Conseil TI</h3>
+        <p data-i18n="s3_d">Audit léger, feuille de route, MVP en 2 à 4 semaines selon la portée.</p>
+      </div>
+    </section>
+
+    <section class="grid" aria-label="Company">
+      <div class="card">
+        <h3 data-i18n="about_t">À propos</h3>
+        <p data-i18n="about_d">Basés à Lachine. Nous livrons des solutions simples, testées et documentées. Contrats en français ou en anglais.</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="contact_t">Contact</h3>
+        <p><a href="mailto:contact@axiomorphe.com">contact@axiomorphe.com</a><br>
+        <span data-i18n="contact_note">Réponse sous 1 jour ouvrable.</span></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>Technologies Axiomorphe</strong> — NEQ: 2281224875</p>
+    <p data-i18n="privacy_officer">Responsable de la protection des renseignements personnels: [Nom/Titre], contact@axiomorphe.com</p>
+    <small data-i18n="foot_note">Ce site n’utilise pas de témoins d’identification ni d’outils d’analyse.</small>
+    <p><a href="privacy.html" data-i18n="privacy_link">Politique de confidentialité</a></p>
+  </footer>
+
+  <script>
+    const dict = {
+      fr: {
+        brand: "Technologies Axiomorphe",
+        hero_title: "Logiciels clairs, IA utile.",
+        hero_sub: "Développement logiciel, intégration de modèles de langage (LLM) et automatisation pour PME. Montréal, Québec.",
+        cta: "Parler à un humain",
+        s1_t: "Développement sur mesure",
+        s1_d: "Applications web et APIs robustes. Pile moderne, sécurité de base incluse.",
+        s2_t: "LLM et agents",
+        s2_d: "Intégration LLM pour recherche, résumé, assistants internes et flux métier.",
+        s3_t: "Conseil TI",
+        s3_d: "Audit léger, feuille de route, MVP en 2 à 4 semaines selon la portée.",
+        about_t: "À propos",
+        about_d: "Basés à Lachine. Nous livrons des solutions simples, testées et documentées. Contrats en français ou en anglais.",
+        contact_t: "Contact",
+        contact_note: "Réponse sous 1 jour ouvrable.",
+        privacy_officer: "Responsable de la protection des renseignements personnels: [Nom/Titre], contact@axiomorphe.com",
+        foot_note: "Ce site n’utilise pas de témoins d’identification ni d’outils d’analyse.",
+        privacy_link: "Politique de confidentialité"
+      },
+      en: {
+        brand: "Axiomorph Technologies",
+        hero_title: "Clear software, useful AI.",
+        hero_sub: "Custom software, language model (LLM) integration, and automation for SMBs. Montreal, Quebec.",
+        cta: "Talk to a human",
+        s1_t: "Custom development",
+        s1_d: "Web apps and APIs. Modern stack with baseline security.",
+        s2_t: "LLM & agents",
+        s2_d: "LLM integration for search, summarization, internal assistants, and workflows.",
+        s3_t: "IT consulting",
+        s3_d: "Light audit, roadmap, MVP in 2–4 weeks depending on scope.",
+        about_t: "About",
+        about_d: "Based in Lachine. We deliver simple, tested, documented solutions. Contracts in French or English.",
+        contact_t: "Contact",
+        contact_note: "Replies within 1 business day.",
+        privacy_officer: "Privacy officer: [Name/Title], contact@axiomorphe.com",
+        foot_note: "This site uses no tracking cookies or analytics.",
+        privacy_link: "Privacy Policy"
+      }
+    };
+    const frBtn = document.getElementById('frBtn');
+    const enBtn = document.getElementById('enBtn');
+    function setLang(lang){
+      localStorage.setItem('lang', lang);
+      document.documentElement.lang = lang === 'fr' ? 'fr' : 'en';
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const key = el.getAttribute('data-i18n');
+        if (dict[lang][key]) el.textContent = dict[lang][key];
+      });
+      frBtn.classList.toggle('active', lang==='fr');
+      enBtn.classList.toggle('active', lang==='en');
+    }
+    frBtn.addEventListener('click', ()=>setLang('fr'));
+    enBtn.addEventListener('click', ()=>setLang('en'));
+    setLang(localStorage.getItem('lang') || 'fr');
+  </script>
+</body>
+</html>
