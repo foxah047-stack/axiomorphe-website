@@ -1,2 +1,3 @@
-# axiomorphe-website
-Bilingual static site (FR first) for a Montréal software/LLM studio.
+# Axiomorphe
+Where wild ideas are shaped into axioms
+
