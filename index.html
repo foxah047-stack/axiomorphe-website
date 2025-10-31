@@ -13,27 +13,22 @@
     header, main, footer { max-width: var(--max); margin: 0 auto; padding: var(--pad); }
     nav { display:flex; align-items:center; justify-content:space-between; gap:12px; }
     .brand { font-weight:700; letter-spacing:.2px; }
-    .lang { display:flex; gap:8px; }
-    .lang button { border:1px solid #ddd; padding:6px 10px; border-radius:8px; background:#fff; cursor:pointer; }
-    .lang button.active { border-color:#111; }
     .hero { padding:56px var(--pad) 24px; }
     h1 { margin:0 0 8px; font-size: clamp(28px, 4vw, 40px); }
     .lead { font-size:clamp(16px, 2.2vw, 18px); color:#333; max-width: 60ch; }
     .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:16px; margin-top: 16px; }
     .card { border:1px solid #eee; border-radius:14px; padding:16px; }
-    .cta { display:inline-block; margin-top:16px; padding:10px 14px; border-radius:10px; border:1px solid #111; background:#111; color:#fff; text-decoration:none; }
-    footer { margin-top:32px; border-top:1px solid #eee; font-size:14px; color:#444; }
-    small { color:#666; }
+    .card h3 { margin-top:0; }
+    .card a { text-decoration:none; color:#111; font-weight:500; }
+    .card a:hover { text-decoration:underline; }
+    footer { margin-top:32px; padding-top:24px; border-top:1px solid #eee; font-size:14px; color:#666; }
+    small { color:#666; display:block; margin-top:8px; }
   </style>
 </head>
 <body>
   <header>
     <nav>
       <div class="brand">Democratic Techno-Socio-Capitalism</div>
-      <div class="lang" aria-label="Language switch" style="display:none;">
-        <button id="frBtn" class="active" type="button">FR</button>
-        <button id="enBtn" type="button">EN</button>
-      </div>
     </nav>
   </header>
 
@@ -47,38 +42,22 @@
       <div class="card">
         <h3>Economic System</h3>
         <p>Universal Basic Income funded by automation taxation, universal healthcare, robust worker protections, and competitive markets with strong antitrust enforcement.</p>
-        <a href="economic-system.html" style="text-decoration:none;color:#111;font-weight:500;">→ Details</a>
+        <a href="economic-system.html">→ Details</a>
       </div>
       <div class="card">
         <h3>Healthcare System</h3>
-        <p>Universal healthcare coverage ensuring medical care as a fundamental right, decoupled from employment and wealth.</p>
-        <a href="healthcare.html" style="text-decoration:none;color:#111;font-weight:500;">→ Details</a>
+        <p>Medicare for All ensuring medical care as a fundamental right, decoupled from employment and wealth.</p>
+        <a href="healthcare.html">→ Details</a>
       </div>
       <div class="card">
         <h3>Housing System</h3>
         <p>Progressive property taxation that increases with portfolio size, discouraging accumulation while maintaining owner-occupied housing affordability.</p>
-        <a href="housing.html" style="text-decoration:none;color:#111;font-weight:500;">→ Details</a>
+        <a href="housing.html">→ Details</a>
       </div>
       <div class="card">
         <h3>Privacy & Data Rights</h3>
         <p>Zero-knowledge identity verification and siloed data architecture. Citizens own their data; verification occurs without revealing personal information.</p>
-        <a href="privacy.html" style="text-decoration:none;color:#111;font-weight:500;">→ Details</a>
-      </div>
-    </section>
-
-    <section style="margin-top:32px;">
-      <h2 style="font-size:20px;margin-bottom:16px;">Additional Components</h2>
-    </section>
-
-    <section class="grid" style="margin-top:32px;" aria-label="Resources">
-      <div class="card">
-        <h3>About This Framework</h3>
-        <p>Democratic Techno-Socio-Capitalism was developed through collaborative analysis of governance challenges in automated economies. It combines market efficiency with social protection and democratic control.</p>
-      </div>
-      <div class="card">
-        <h3>Documentation</h3>
-        <p><a href="DTSC_One_Page_Manifesto.md" style="color:#111;">Complete Manifesto</a></p>
-        <p style="margin-top:8px;font-size:14px;color:#666;">Comprehensive explanation of all framework components, implementation considerations, and philosophical foundations.</p>
+        <a href="privacy.html">→ Details</a>
       </div>
     </section>
   </main>
@@ -86,6 +65,7 @@
   <footer>
     <p><strong>Democratic Techno-Socio-Capitalism</strong></p>
     <p>An open governance framework. Free to reference, discuss, and adapt.</p>
+    <p>Contact: <a href="mailto:contact@axiomorphe.org">contact@axiomorphe.org</a></p>
     <small>This site uses no tracking, cookies, or analytics. Information only.</small>
   </footer>
 
