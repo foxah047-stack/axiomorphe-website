@@ -1,38 +1,358 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Politique de confidentialité — Technologies Axiomorphe</title>
-  <meta name="description" content="Politique de confidentialité (Loi 25)">
+  <title>Privacy & Data Rights — Democratic Techno-Socio-Capitalism</title>
+  <meta name="description" content="Zero-knowledge verification and data silos. Privacy by architecture, not promises.">
+  <link rel="icon" href="favicon.ico">
   <style>
-    body{font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height:1.6; margin:0; color:#0a0a0a}
-    main{max-width:800px; margin:0 auto; padding:20px}
-    h1{font-size:28px}
-    a{color:#0a0a0a}
+    :root { --max: 980px; --pad: 16px; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height: 1.6; color:#0a0a0a; background:#fff; }
+    header, main, footer { max-width: var(--max); margin: 0 auto; padding: var(--pad); }
+    nav { display:flex; align-items:center; gap:16px; margin-bottom:24px; }
+    nav a { color:#111; text-decoration:none; }
+    nav a:hover { text-decoration:underline; }
+    h1 { font-size: clamp(28px, 4vw, 36px); margin:0 0 16px; }
+    h2 { font-size: clamp(20px, 3vw, 24px); margin:32px 0 12px; border-bottom:1px solid #eee; padding-bottom:8px; }
+    h3 { font-size:18px; margin:24px 0 8px; }
+    p { margin:0 0 16px; max-width:70ch; }
+    .intro { font-size:18px; color:#333; margin-bottom:32px; }
+    .section { margin:32px 0; }
+    ul { margin:0 0 16px; padding-left:24px; }
+    li { margin:8px 0; }
+    strong { font-weight:600; }
+    .highlight { background:#f9f9f9; padding:16px; border-left:3px solid #111; margin:16px 0; }
+    .flow { background:#f5f5f5; padding:16px; margin:16px 0; border-radius:8px; font-family: monospace; font-size:14px; }
+    .related { margin-top:48px; padding-top:24px; border-top:1px solid #eee; }
+    .related a { color:#111; font-weight:500; }
+    footer { margin-top:48px; padding-top:24px; border-top:1px solid #eee; font-size:14px; color:#666; }
   </style>
 </head>
 <body>
-<main>
-  <h1>Politique de confidentialité</h1>
-  <p><strong>Responsable de la protection des renseignements personnels</strong> : [Nom/Titre] — <a href="mailto:contact@axiomorphe.com">privacy@axiomorphe.com</a></p>
+  <header>
+    <nav>
+      <a href="index.html">← Overview</a>
+      <span style="color:#999;">|</span>
+      <span>Privacy & Data Rights</span>
+    </nav>
+  </header>
 
-  <h2>Ce que nous collectons</h2>
-  <p>Nous collectons uniquement les renseignements que vous nous fournissez volontairement (ex. courriel envoyé à contact@axiomorphe.com) et les données nécessaires à la prestation de nos services.</p>
+  <main>
+    <h1>Privacy & Data Rights</h1>
+    
+    <p class="intro">Zero-knowledge verification system. You prove credentials without revealing identity. Data siloed by function, not consolidated. Privacy by architecture, not corporate promises. Surveillance exists but cannot be weaponized.</p>
 
-  <h2>Utilisation</h2>
-  <p>Vos renseignements servent à répondre à vos demandes, exécuter un contrat et respecter nos obligations légales.</p>
+    <div class="section">
+      <h2>The Problem We're Solving</h2>
+      
+      <p><strong>Current system failures:</strong></p>
+      <ul>
+        <li><strong>Data honeypots:</strong> Every website stores your full identity, creating massive breach targets</li>
+        <li><strong>Surveillance capitalism:</strong> Companies monetize and track you across the entire internet</li>
+        <li><strong>No real verification:</strong> Must reveal everything to prove anything (age, credentials, eligibility)</li>
+        <li><strong>Identity theft epidemic:</strong> Credentials are reusable and easy to steal</li>
+        <li><strong>Corporate promises:</strong> "Trust us with your data" – but breaches happen constantly</li>
+        <li><strong>No control:</strong> Once data is shared, you lose all control over it</li>
+      </ul>
 
-  <h2>Hébergement et transferts</h2>
-  <p>Nos services peuvent être hébergés au Canada ou aux États-Unis. Lorsque des renseignements sont stockés à l’extérieur du Québec, des mesures contractuelles et techniques appropriées sont appliquées.</p>
+      <div class="highlight">
+        <strong>The fundamental flaw:</strong> Current systems conflate identity with verification. You must reveal WHO you are to prove WHAT you are.
+      </div>
+    </div>
 
-  <h2>Vos droits</h2>
-  <p>Vous pouvez demander l’accès, la rectification ou le retrait de votre consentement. Écrivez à <a href="mailto:contact@axiomorphe.com">contact@axiomorphe.com</a>.</p>
+    <div class="section">
+      <h2>The Solution: Zero-Knowledge Verification</h2>
 
-  <h2>Conservation</h2>
-  <p>Nous conservons les renseignements le temps nécessaire pour atteindre les fins décrites ci-dessus et respecter les exigences légales.</p>
+      <h3>The Handshake System</h3>
+      
+      <p><strong>Core concept:</strong> Prove credentials without revealing identity. Answer yes/no questions without sharing data.</p>
 
-  <p><a href="index.html">← Retour au site</a></p>
-</main>
+      <div class="flow">
+<strong>Verification Flow:</strong>
+
+1. User → Website: "I want [service]"
+2. Website → Device: "Need verification for [requirement]"
+3. Device → IVA: "Does my ID meet [requirement]?"
+4. IVA → Government Branch: "Check eligibility"
+5. Gov Branch → IVA: GREEN (yes) or RED (no)
+6. IVA → Website: GREEN or RED
+7. Website → User: Access granted or denied
+      </div>
+
+      <p><strong>What the website learns:</strong> Nothing. Only GREEN (proceed) or RED (denied).</p>
+      <p><strong>What the website never learns:</strong> Your age, name, address, medical history, or any personal data.</p>
+
+      <h3>Key Components</h3>
+
+      <p><strong>Your Device:</strong></p>
+      <ul>
+        <li>Generates rotating or derived IDs for each website/session</li>
+        <li>IDs change frequently like IP addresses</li>
+        <li>No way to track you across sites or time</li>
+        <li>You control when verification happens</li>
+      </ul>
+
+      <p><strong>Identity Verification Authority (IVA):</strong></p>
+      <ul>
+        <li>Routing layer only – holds NO data itself</li>
+        <li>Directs queries to appropriate government branch</li>
+        <li>Never knows which website you're visiting</li>
+        <li>Government-funded, publicly/privately operated</li>
+        <li>Open source code, mandatory audits</li>
+      </ul>
+
+      <p><strong>Government Branches:</strong></p>
+      <ul>
+        <li>Each branch has isolated "top level" database</li>
+        <li>Healthcare, Justice, Licensing, Treasury – all separate</li>
+        <li>Branches CANNOT query each other</li>
+        <li>Legal firewall: data from one branch inadmissible in another</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Data Silo Architecture</h2>
+
+      <p><strong>Critical principle:</strong> Data separated by function. No cross-contamination. No "god database" that knows everything about everyone.</p>
+
+      <h3>Healthcare Branch</h3>
+      <p><strong>Federal Top Level:</strong></p>
+      <ul>
+        <li>Coverage eligibility: "Is patient covered by Medicare for All?"</li>
+        <li>Prescription registry: "Does patient have valid prescription for Drug X?"</li>
+        <li>Does NOT contain: Diagnoses, test results, medical history, treatment details</li>
+      </ul>
+
+      <p><strong>Local Hospital Level:</strong></p>
+      <ul>
+        <li>Full medical records stay at individual hospitals/clinics</li>
+        <li>Not linked to central database</li>
+        <li>Patient controls sharing between providers</li>
+        <li>Breach at one hospital ≠ breach of everyone's data</li>
+      </ul>
+
+      <p><strong>Verification examples:</strong></p>
+      <ul>
+        <li>Pharmacy: "Does patient have prescription?" → GREEN/RED</li>
+        <li>Medical equipment supplier: "Is patient eligible for wheelchair?" → GREEN/RED</li>
+      </ul>
+
+      <h3>Justice Branch</h3>
+      <p><strong>What it holds:</strong></p>
+      <ul>
+        <li>Court records and legal restrictions</li>
+        <li>Background check eligibility</li>
+        <li>Firearm purchase restrictions</li>
+        <li>Professional disqualifications</li>
+      </ul>
+
+      <p><strong>Cannot be used for:</strong> Employment discrimination, credit decisions, housing denials (except where legally required)</p>
+
+      <p><strong>Verification examples:</strong></p>
+      <ul>
+        <li>Gun store: "Can person purchase firearm?" → GREEN/RED</li>
+        <li>Employer (specific cases): "Background check clear for [position]?" → GREEN/RED</li>
+      </ul>
+
+      <h3>Licensing Branch</h3>
+      <p><strong>What it holds:</strong></p>
+      <ul>
+        <li>Professional licenses and credentials</li>
+        <li>Educational certifications</li>
+        <li>Expiration dates and status</li>
+      </ul>
+
+      <p><strong>Verification examples:</strong></p>
+      <ul>
+        <li>Hospital: "Is this person a licensed doctor?" → GREEN/RED + expiration</li>
+        <li>Client: "Is this person a licensed lawyer?" → GREEN/RED + bar association</li>
+      </ul>
+
+      <h3>Treasury/Financial Branch</h3>
+      <p><strong>What it holds:</strong></p>
+      <ul>
+        <li>Income verification data</li>
+        <li>Credit eligibility (score only, not history)</li>
+        <li>Tax compliance status</li>
+      </ul>
+
+      <p><strong>Cannot be used for:</strong> Healthcare decisions, employment discrimination, non-financial purposes</p>
+
+      <p><strong>Verification examples:</strong></p>
+      <ul>
+        <li>Landlord: "Does applicant meet 3x rent income?" → GREEN/RED</li>
+        <li>Lender: "Credit score above threshold?" → GREEN/RED</li>
+      </ul>
+
+      <h3>Basic Identity Branch</h3>
+      <p><strong>What it holds:</strong></p>
+      <ul>
+        <li>Age verification (birthdate ranges, not exact date)</li>
+        <li>Citizenship/residency status</li>
+        <li>Voting eligibility</li>
+      </ul>
+
+      <p><strong>Verification examples:</strong></p>
+      <ul>
+        <li>Age-restricted website: "Is user 18+?" → GREEN/RED</li>
+        <li>Alcohol store: "Is customer 21+?" → GREEN/RED</li>
+        <li>Polling place: "Is person eligible to vote?" → GREEN/RED</li>
+      </ul>
+
+      <div class="highlight">
+        <p><strong>The firewall is legal, not just technical:</strong></p>
+        <p>If law enforcement obtains medical data and uses it for prosecution, the case is void. If employers use justice data for hiring decisions (outside legally permitted background checks), it's illegal discrimination. Data from one branch is inadmissible in another's proceedings.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Why This Works</h2>
+
+      <h3>For Citizens</h3>
+      <ul>
+        <li><strong>Privacy preserved:</strong> Websites can't build profiles or track you</li>
+        <li><strong>Security enhanced:</strong> Rotating IDs prevent tracking, no data to breach at websites</li>
+        <li><strong>Control maintained:</strong> You decide when verification happens</li>
+        <li><strong>Convenience improved:</strong> No repeatedly entering personal data</li>
+        <li><strong>Rights protected:</strong> Data cannot be weaponized against you</li>
+      </ul>
+
+      <h3>For Businesses</h3>
+      <ul>
+        <li><strong>Liability reduced:</strong> Don't store sensitive data, can't be breached</li>
+        <li><strong>Compliance simplified:</strong> One standard verification system</li>
+        <li><strong>Costs lowered:</strong> No need to build identity verification infrastructure</li>
+        <li><strong>Fraud reduced:</strong> Cryptographic proofs can't be faked</li>
+      </ul>
+
+      <h3>For Government</h3>
+      <ul>
+        <li><strong>Legitimate enforcement enabled:</strong> With warrants, clean data available</li>
+        <li><strong>Identity fraud reduced:</strong> Harder to impersonate people</li>
+        <li><strong>Public health improved:</strong> Medical data properly protected but accessible to authorized researchers (anonymized)</li>
+        <li><strong>Democratic accountability:</strong> System is auditable and transparent</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Penalties for Violations</h2>
+
+      <p><strong>Framework note:</strong> The following represents proposed baseline penalties subject to legal review and legislative adjustment. Exact penalties, tier thresholds, and aggravating factors would be determined by legal experts.</p>
+
+      <h3>Civil (Monetary) Penalties</h3>
+      <p><strong>For data theft and misuse:</strong></p>
+      <ul>
+        <li>Unauthorized access to data: $10,000 per record + actual damages</li>
+        <li>Cross-branch data query: $50,000 per query + actual damages</li>
+        <li>Failure to delete data: $5,000 per record per day</li>
+        <li>Data breach (negligence): $1,000 per affected person + remediation costs</li>
+        <li>Selling/monetizing data: 3x profits gained + punitive damages</li>
+      </ul>
+      <p><strong>Paid to:</strong> Affected individuals (class action eligible)</p>
+
+      <h3>Criminal Penalties (Scaled by Severity)</h3>
+
+      <p><strong>Tier 1: Negligent/Minor</strong></p>
+      <ul>
+        <li>Accidental data exposure: Fines only</li>
+        <li>Single unauthorized access: $10,000 + probation</li>
+        <li>Failure to comply with deletion: $5,000/day until fixed</li>
+      </ul>
+
+      <p><strong>Tier 2: Reckless/Moderate (1-5 years)</strong></p>
+      <ul>
+        <li>Intentional unauthorized access: 1-3 years</li>
+        <li>Cross-branch querying for personal gain: 2-4 years</li>
+        <li>Selling data commercially: 3-5 years + 3x profits forfeiture</li>
+      </ul>
+
+      <p><strong>Tier 3: Discriminatory/Harmful (5-15 years)</strong></p>
+      <ul>
+        <li>Using medical data for employment discrimination: 5-8 years</li>
+        <li>Using legal records for harassment: 5-10 years</li>
+        <li>Building surveillance profiles: 8-15 years</li>
+        <li>Government employee abuse of access: 7-12 years + pension forfeiture</li>
+      </ul>
+
+      <p><strong>Tier 4: Violent/Coercive (10-25 years)</strong></p>
+      <ul>
+        <li>Blackmail using private data: 10-15 years</li>
+        <li>Using data to stalk/harm: 15-20 years</li>
+        <li>Enabling violence through data exposure: 20-25 years</li>
+        <li>Systematic government surveillance program: 25 years + charter revocation</li>
+      </ul>
+
+      <p><strong>Aggravating factors (add years to sentence):</strong></p>
+      <ul>
+        <li>Position of trust (doctor, law enforcement, IVA employee): +5 years</li>
+        <li>Large scale (1,000+ victims): +5 years</li>
+        <li>Vulnerable victims (children, elderly, disabled): +5 years</li>
+      </ul>
+
+      <h3>Corporate Liability</h3>
+      <ul>
+        <li>Executives personally liable (cannot hide behind corporation)</li>
+        <li>Company charter revocation for systematic violations</li>
+        <li>Board members can be barred from serving at other companies</li>
+      </ul>
+
+      <div class="highlight">
+        <strong>The principle:</strong> Penalties must be severe enough to deter violations while remaining proportional to harm caused. Privacy violations are treated as seriously as theft and fraud – because that's what they are.
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Key Principles</h2>
+
+      <p><strong>For policymakers and implementers:</strong></p>
+
+      <ul>
+        <li><strong>Privacy by architecture:</strong> System design prevents misuse, not just policies prohibiting it</li>
+        <li><strong>Zero-knowledge default:</strong> Prove what's necessary, reveal nothing more</li>
+        <li><strong>Data minimization:</strong> Collect only what's needed, delete when no longer required</li>
+        <li><strong>Siloed by function:</strong> No cross-contamination between data types</li>
+        <li><strong>Citizen ownership:</strong> Your data belongs to you, not to companies or government</li>
+        <li><strong>Legal firewalls:</strong> Technical separation backed by legal inadmissibility</li>
+        <li><strong>Transparent operation:</strong> Open source code, public audits, democratic oversight</li>
+        <li><strong>Accountable enforcement:</strong> Meaningful penalties for violations, not empty promises</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Implementation Approach</h2>
+      
+      <p>Privacy and data rights specialists determine:</p>
+      <ul>
+        <li>Cryptographic protocols and security standards</li>
+        <li>IVA governance structure and oversight mechanisms</li>
+        <li>Rotating ID generation algorithms</li>
+        <li>Audit procedures and compliance verification</li>
+        <li>International coordination and interoperability</li>
+        <li>Emergency access protocols (with safeguards)</li>
+        <li>User interface design for consent and control</li>
+        <li>Transition timeline from current systems</li>
+      </ul>
+
+      <p>The framework provides direction: zero-knowledge verification, data silos, legal firewalls, meaningful penalties. Experts determine optimal implementation.</p>
+    </div>
+
+    <div class="related">
+      <h2>Related Components</h2>
+      <p>The privacy system connects to other framework elements:</p>
+      <ul>
+        <li><a href="healthcare.html">Healthcare System</a> — Medical data silo enables universal healthcare without surveillance</li>
+        <li><a href="economic-system.html">Economic System</a> — Financial verification for UBI and services without invasive tracking</li>
+        <li><a href="housing.html">Housing System</a> — Income verification for housing without revealing full financial history</li>
+        <li><a href="index.html">Overview</a> — See how privacy fits into complete framework</li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    <p><a href="index.html">← Back to Overview</a></p>
+    <p style="margin-top:16px;"><strong>Democratic Techno-Socio-Capitalism</strong> — An open governance framework</p>
+  </footer>
 </body>
 </html>
