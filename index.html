@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Democratic Techno-Socio-Capitalism</title>
-  <meta name="description" content="A governance framework for automated economies with universal basic income, privacy by design, and witness-based justice.">
+  <meta name="description" content="A governance framework for automated economies. Starts with democracy reform, then universal services, automation taxation, and worker protections.">
   <link rel="icon" href="favicon.ico">
   <style>
     :root { --max: 980px; --pad: 16px; }
@@ -16,13 +16,69 @@
     .hero { padding:56px var(--pad) 24px; }
     h1 { margin:0 0 8px; font-size: clamp(28px, 4vw, 40px); }
     .lead { font-size:clamp(16px, 2.2vw, 18px); color:#333; max-width: 60ch; }
-    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:16px; margin-top: 16px; }
-    .card { border:1px solid #eee; border-radius:14px; padding:16px; }
-    .card h3 { margin-top:0; }
-    .card a { text-decoration:none; color:#111; font-weight:500; }
+    
+    .foundation-section { 
+      background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
+      border: 2px solid #ff6b35;
+      border-radius: 16px;
+      padding: 24px;
+      margin: 32px 0;
+    }
+    .foundation-section h2 {
+      margin: 0 0 12px;
+      color: #c44100;
+      font-size: 24px;
+    }
+    .foundation-section p {
+      margin: 0 0 16px;
+      font-size: 16px;
+    }
+    .foundation-card {
+      background: #fff;
+      border: 2px solid #ff6b35;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 16px;
+    }
+    .foundation-card h3 {
+      margin: 0 0 12px;
+      font-size: 22px;
+      color: #c44100;
+    }
+    .foundation-card .cta {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 12px 20px;
+      background: #ff6b35;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+    .foundation-card .cta:hover {
+      background: #c44100;
+    }
+
+    .depends-on {
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+      margin: 24px 0 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:16px; margin-top: 24px; }
+    .card { border:1px solid #eee; border-radius:14px; padding:20px; transition: border-color 0.2s; background:#fff; }
+    .card:hover { border-color:#999; }
+    .card h3 { margin:0 0 12px; font-size:20px; }
+    .card p { margin:0 0 16px; font-size:15px; line-height:1.5; }
+    .card a { color:#111; font-weight:500; text-decoration:none; }
     .card a:hover { text-decoration:underline; }
-    footer { margin-top:32px; padding-top:24px; border-top:1px solid #eee; font-size:14px; color:#666; }
-    small { color:#666; display:block; margin-top:8px; }
+    
+    .principle { background:#f5f5f5; padding:20px; border-radius:12px; margin:32px 0; }
+    footer { margin-top:48px; padding-top:24px; border-top:1px solid #eee; font-size:14px; color:#666; }
+    small { color:#666; }
   </style>
 </head>
 <body>
@@ -35,90 +91,115 @@
   <main>
     <section class="hero">
       <h1>A Governance Framework for the Automated Age</h1>
-      <p class="lead">Democratic Techno-Socio-Capitalism addresses economic distribution, data privacy, and legal enforcement in technologically advanced societies.</p>
+      <p class="lead">Addresses automation-driven job displacement, wealth concentration, and corporate control of democracy. Combines market efficiency with social protection through democratic governance.</p>
     </section>
 
-    <section class="grid" aria-label="Core Components">
-      <div class="card">
-        <h3>Economic System</h3>
-        <p>Universal Basic Income funded by automation taxation, universal healthcare, robust worker protections, and competitive markets with strong antitrust enforcement.</p>
-        <a href="economic-system.html">→ Details</a>
+    <div class="foundation-section">
+      <h2>🏛️ The Foundation: Democracy Reform</h2>
+      <p><strong>Everything else depends on this.</strong> Without removing corporate money from politics, every other reform gets blocked by corporate lobbies. This must happen first.</p>
+      
+      <div class="foundation-card">
+        <h3>Overturn Citizens United</h3>
+        <p>End corporate control of democracy through constitutional amendment, comprehensive campaign finance reform, and lobbying restrictions. Unite left-right populist coalition against AIPAC and corporate money.</p>
+        <p><strong>Why first:</strong> Medicare for All? Insurance lobby blocks it. Wealth tax? Corporate lobby blocks it. Worker protections? Business lobby blocks it. Nothing passes while corporations buy politicians.</p>
+        <p><strong>Timeline:</strong> Year 1 legislation, Years 2-8 constitutional amendment ratification</p>
+        <a href="democracy-reform.html" class="cta">→ View Complete Democracy Reform Plan</a>
       </div>
-      <div class="card">
-        <h3>Healthcare System</h3>
-        <p>Medicare for All ensuring medical care as a fundamental right, decoupled from employment and wealth.</p>
-        <a href="healthcare.html">→ Details</a>
-      </div>
-      <div class="card">
-        <h3>Housing System</h3>
-        <p>Progressive property taxation that increases with portfolio size, discouraging accumulation while maintaining owner-occupied housing affordability.</p>
-        <a href="housing.html">→ Details</a>
-      </div>
-      <div class="card">
-        <h3>Privacy & Data Rights</h3>
-        <p>Zero-knowledge identity verification and siloed data architecture. Citizens own their data; verification occurs without revealing personal information.</p>
-        <a href="privacy.html">→ Details</a>
+    </div>
+
+    <div class="depends-on">↓ Once Democracy Reform Succeeds, These Become Achievable ↓</div>
+
+    <section>
+      <h2 style="font-size:24px; margin:32px 0 16px;">Core Framework Components</h2>
+      
+      <div class="grid">
+        <div class="card">
+          <h3>Economic System</h3>
+          <p>Wealth tax (incremental curve on net worth >$50M), automation dividend tax (taxes labor displacement), Universal Basic Income, antitrust enforcement, and worker protections.</p>
+          <p style="font-size:14px;color:#666;margin-bottom:16px;"><em>Possible once corporate lobby defeated</em></p>
+          <a href="economic-system.html">→ Details</a>
+        </div>
+
+        <div class="card">
+          <h3>Healthcare System</h3>
+          <p>Medicare for All—single-payer national health system. Everyone covered automatically from birth. Healthcare as human right, free at point of service.</p>
+          <p style="font-size:14px;color:#666;margin-bottom:16px;"><em>Possible once insurance lobby powerless</em></p>
+          <a href="healthcare.html">→ Full System</a>
+        </div>
+
+        <div class="card">
+          <h3>Worker Protections</h3>
+          <p>Minimum wage indexed to productivity, mandatory works councils for workplace democracy, just cause employment, paid leave, gig worker classification.</p>
+          <p style="font-size:14px;color:#666;margin-bottom:16px;"><em>Possible once business lobby weakened</em></p>
+          <a href="worker-protections.html">→ Details</a>
+        </div>
+
+        <div class="card">
+          <h3>Antitrust Enforcement</h3>
+          <p>Break up tech monopolies (Amazon, Google, Meta), regulate payment infrastructure (Visa/Mastercard), prevent AI monopolies, mandate interoperability.</p>
+          <p style="font-size:14px;color:#666;margin-bottom:16px;"><em>Possible once companies can't buy protection</em></p>
+          <a href="antitrust.html">→ Details</a>
+        </div>
+
+        <div class="card">
+          <h3>Housing System</h3>
+          <p>Progressive property taxation based on function, occupancy, and accumulation. Discourages speculation and hoarding while encouraging families and efficient use.</p>
+          <p style="font-size:14px;color:#666;margin-bottom:16px;"><em>Possible once real estate lobby neutered</em></p>
+          <a href="housing.html">→ Details</a>
+        </div>
+
+        <div class="card">
+          <h3>Privacy & Data Rights</h3>
+          <p>Zero-knowledge identity verification, data silos by function, privacy by architecture. Citizens own their data; verification occurs without revealing personal information.</p>
+          <p style="font-size:14px;color:#666;margin-bottom:16px;"><em>Possible once tech lobby can't block</em></p>
+          <a href="privacy.html">→ Details</a>
+        </div>
+
+        <div class="card">
+          <h3>Justice System</h3>
+          <p>Witness-based prosecution, rehabilitation focus, mental health response system, strict privacy protections, accountability for state power.</p>
+          <p style="font-size:14px;color:#666;margin-bottom:16px;"><em>Possible once private prison lobby defeated</em></p>
+          <a href="justice.html">→ Details</a>
+        </div>
       </div>
     </section>
 
-    <section style="margin-top:32px;">
-      <h2 style="font-size:20px;margin-bottom:16px;">Additional Components</h2>
+    <div class="principle" style="margin-top:48px;">
+      <h3 style="margin:0 0 12px; font-size:20px;">Core Principle</h3>
+      <p style="margin:0;"><strong>Democracy requires active maintenance.</strong> Markets concentrate wealth and power without intervention. Technology accelerates this concentration. Democratic governance must adapt to ensure technological progress benefits everyone, not just capital owners and platform monopolists.</p>
+      <p style="margin:12px 0 0;"><strong>The sequence matters:</strong> Fix democracy first (remove corporate money), then implement economic reforms (taxation, UBI, universal services), then maintain competitive markets (antitrust), then protect workers (voice and security). Each enables the next.</p>
+    </div>
+
+    <section style="margin-top:40px;">
+      <h2 style="font-size:20px;margin-bottom:16px;">Implementation Approach</h2>
+      <p style="max-width:70ch;">This framework provides direction and principles. Economists, policy experts, healthcare specialists, technologists, and legal scholars determine optimal implementation details. Evidence-based, pragmatic, flexible, transparent, and iterative.</p>
+      
+      <p style="max-width:70ch; margin-top:16px;"><strong>Timeline:</strong></p>
+      <ul style="max-width:70ch;">
+        <li><strong>Year 1:</strong> Democracy Reform Act, begin Citizens United amendment process</li>
+        <li><strong>Years 2-4:</strong> Economic reforms pass (wealth tax, automation tax, worker protections), healthcare transition, antitrust enforcement, UBI pilots</li>
+        <li><strong>Years 5-8:</strong> Constitutional amendment ratified, full framework implementation, UBI national rollout</li>
+      </ul>
     </section>
 
-    <section class="grid" aria-label="Secondary Components">
-      <div class="card">
-        <h3>Legal & Justice System</h3>
-        <p>Witness-only prosecution requirements. Surveillance exists but cannot generate criminal charges without direct human observation.</p>
-        <a href="justice.html" style="text-decoration:none;color:#111;font-weight:500;">→ Details</a>
-      </div>
-      <div class="card">
-        <h3>Education System</h3>
-        <p>Lifelong learning infrastructure for post-work society, emphasizing creativity, critical thinking, and continuous adaptation.</p>
-        <a href="education.html" style="text-decoration:none;color:#111;font-weight:500;">→ Details</a>
-      </div>
-      <div class="card">
-        <h3>Technology Governance</h3>
-        <p>Democratic oversight of AI development, algorithmic transparency, and citizen participation in technology policy decisions.</p>
-        <a href="technology.html" style="text-decoration:none;color:#111;font-weight:500;">→ Details</a>
-      </div>
-      <div class="card">
-        <h3>Climate Policy</h3>
-        <p>Carbon taxation, green infrastructure investment, and climate adaptation funded by automation dividends and progressive taxation.</p>
-        <a href="climate.html" style="text-decoration:none;color:#111;font-weight:500;">→ Details</a>
-      </div>
-      <div class="card">
-        <h3>Media & Information</h3>
-        <p>Addressing disinformation, algorithmic manipulation, and information ecosystem health while preserving free expression.</p>
-        <a href="media.html" style="text-decoration:none;color:#111;font-weight:500;">→ Details</a>
-      </div>
-      <div class="card">
-        <h3>Democratic Institutions</h3>
-        <p>Citizen assemblies, participatory budgeting, and institutional reforms for meaningful democratic participation.</p>
-        <a href="democracy.html" style="text-decoration:none;color:#111;font-weight:500;">→ Details</a>
-      </div>
-    </section>
-
-    <section style="margin-top:48px; max-width:70ch;">
-      <h2 style="font-size:24px; margin-bottom:16px;">Why Not Democratic Socialism?</h2>
-      <p>Democratic Techno-Socio-Capitalism maintains free markets, competition, and private enterprise. The distinction matters:</p>
-      
-      <p><strong>Markets remain competitive:</strong> Companies compete, innovate, and operate independently. No state ownership of production. Antitrust enforcement prevents monopolies, but private business continues.</p>
-      
-      <p><strong>Redistribution, not revolution:</strong> Wealth and automation taxes fund universal services (healthcare, UBI) without eliminating capitalism. Profit motive exists; gains are simply shared more broadly.</p>
-      
-      <p><strong>Technology-focused:</strong> Specifically designed for automated economies where traditional labor markets fail. Not ideological opposition to markets—pragmatic response to technological displacement.</p>
-      
-      <p><strong>Surveillance with safeguards:</strong> Accepts that data collection exists; structures it with legal firewalls and zero-knowledge verification rather than attempting to eliminate it entirely.</p>
-      
-      <p>This framework preserves what works about capitalism (innovation, efficiency, choice) while addressing what fails (wealth concentration, automation displacement, surveillance abuse). It's techno-socio-capitalism: market economy with strong social protection and technological adaptation.</p>
+    <section style="margin-top:40px;">
+      <h2 style="font-size:20px;margin-bottom:16px;">Why This Approach Succeeds</h2>
+      <ul style="max-width:70ch;">
+        <li><strong>Fixes root cause first:</strong> Democracy reform removes corporate veto over all other policies</li>
+        <li><strong>Addresses automation directly:</strong> Taxes displacement, funds UBI, enables transition</li>
+        <li><strong>Preserves markets:</strong> Competition continues, innovation proceeds, but gains shared broadly</li>
+        <li><strong>Politically achievable:</strong> Left-right populist coalition united against corruption</li>
+        <li><strong>Economically sustainable:</strong> Revenue streams scale with economic activity</li>
+        <li><strong>Future-proof:</strong> Designed for automated economy, adapts as technology accelerates</li>
+      </ul>
     </section>
   </main>
 
   <footer>
     <p><strong>Democratic Techno-Socio-Capitalism</strong></p>
     <p>An open governance framework. Free to reference, discuss, and adapt.</p>
-    <p>Contact: <a href="mailto:contact@axiomorphe.org">contact@axiomorphe.org</a></p>
-    <small>This site uses no tracking, cookies, or analytics. Information only.</small>
+    <p style="margin-top:16px;"><strong>Start here:</strong> <a href="democracy-reform.html" style="color:#ff6b35;font-weight:600;">Democracy Reform →</a></p>
+    <small style="display:block;margin-top:16px;">This site uses no tracking, cookies, or analytics. Information only.</small>
   </footer>
 
 </body>
