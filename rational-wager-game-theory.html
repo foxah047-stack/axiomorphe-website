@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Rational Wager: A Game-Theoretic Analysis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+
+        h2 {
+            color: #2a5298;
+            font-size: 2em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        h3 {
+            color: #667eea;
+            font-size: 1.5em;
+            margin: 25px 0 15px 0;
+        }
+
+        .decision-tree {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .tree-node {
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .tree-node:hover {
+            transform: translateX(10px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .node-level-1 {
+            background: #e3f2fd;
+            border-color: #2196F3;
+            margin-left: 0;
+        }
+
+        .node-level-2 {
+            background: #f3e5f5;
+            border-color: #9c27b0;
+            margin-left: 40px;
+        }
+
+        .node-level-3 {
+            background: #e8f5e9;
+            border-color: #4caf50;
+            margin-left: 80px;
+        }
+
+        .node-label {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .node-description {
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .payoff-matrix {
+            overflow-x: auto;
+            margin: 25px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        .outcome-good {
+            color: #4caf50;
+            font-weight: bold;
+        }
+
+        .outcome-bad {
+            color: #f44336;
+            font-weight: bold;
+        }
+
+        .outcome-neutral {
+            color: #ff9800;
+            font-weight: bold;
+        }
+
+        .probability-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: inline-block;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .prob-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .prob-label {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .comparison-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .card-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid;
+        }
+
+        .card-reason {
+            border-color: #4caf50;
+            color: #4caf50;
+        }
+
+        .card-faith {
+            border-color: #f44336;
+            color: #f44336;
+        }
+
+        .outcome-list {
+            list-style: none;
+        }
+
+        .outcome-list li {
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 5px;
+            background: #f8f9fa;
+        }
+
+        .emoji {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+
+        .interactive-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px 5px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        .interactive-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fff9c4 0%, #fff59d 100%);
+            border-left: 5px solid #fbc02d;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-weight: 500;
+        }
+
+        .bayesian-section {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .equation {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .conclusion-box {
+            background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 40px 0;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        .conclusion-box h2 {
+            color: white;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .conclusion-box p {
+            font-size: 1.2em;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+        }
+
+        .flow-arrow {
+            text-align: center;
+            font-size: 2em;
+            color: #667eea;
+            margin: 20px 0;
+        }
+
+        .legend {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎲 The Rational Wager</h1>
+            <p class="subtitle">A Complete Game-Theoretic Framework for Religious Belief</p>
+        </header>
+
+        <div class="content">
+            <!-- Introduction -->
+            <div class="section">
+                <h2>🎯 The Setup</h2>
+                <p style="font-size: 1.1em; margin-bottom: 20px;">
+                    Pascal's Wager claims belief in God is rational because infinite reward beats any finite cost. 
+                    But Pascal made a critical error: <strong>he didn't account for which God to believe in.</strong>
+                </p>
+                <div class="highlight-box">
+                    <strong>The Problem:</strong> There are ~4,000 religions with contradictory claims. 
+                    Picking one randomly gives you a 0.025% chance of being right. 
+                    This isn't a wager—it's a lottery with eternal stakes.
+                </div>
+            </div>
+
+            <!-- Decision Tree -->
+            <div class="section">
+                <h2>🌳 Part 1: The Complete Decision Tree</h2>
+                <p style="margin-bottom: 20px;">Let's map every possible scenario systematically:</p>
+                
+                <div class="decision-tree">
+                    <div class="tree-node node-level-1">
+                        <div class="node-label">❓ Does God Exist?</div>
+                    </div>
+
+                    <div class="tree-node node-level-2">
+                        <div class="node-label">❌ NO GOD</div>
+                        <div class="node-description">
+                            <strong>Strategy:</strong> Use reason, maximize finite well-being<br>
+                            <strong>Outcome:</strong> Optimal finite utility ✓
+                        </div>
+                    </div>
+
+                    <div class="tree-node node-level-2">
+                        <div class="node-label">✅ YES GOD → What Type?</div>
+                    </div>
+
+                    <div class="tree-node node-level-3">
+                        <div class="node-label">😴 INDIFFERENT GOD (Deist)</div>
+                        <div class="node-description">
+                            Doesn't care about beliefs or actions<br>
+                            <strong>Strategy:</strong> Same as "No God"<br>
+                            <strong>Outcome:</strong> Optimal finite utility ✓
+                        </div>
+                    </div>
+
+                    <div class="tree-node node-level-3">
+                        <div class="node-label">😈 BAD/ARBITRARY GOD</div>
+                        <div class="node-description">
+                            Malevolent, capricious, or unknowable preferences<br>
+                            <strong>Strategy:</strong> Cannot optimize for random behavior<br>
+                            <strong>Outcome:</strong> Maximize finite well-being ✓
+                        </div>
+                    </div>
+
+                    <div class="tree-node node-level-3" style="background: #c8e6c9; border-color: #4caf50; border-width: 4px;">
+                        <div class="node-label">😇 GOOD GOD (Rational & Just)</div>
+                        <div class="node-description">
+                            <strong>This is the ONLY scenario that matters!</strong><br>
+                            Question: What would a good God value?<br>
+                            Answer: Evidence-based reasoning and intellectual integrity
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong>Key Insight:</strong> 3 out of 4 branches lead to the same conclusion: 
+                    <em>Use reason and maximize well-being.</em> Only "Good God" potentially changes the strategy—
+                    and a good God would value the same rational methodology!
+                </div>
+            </div>
+
+            <!-- Many Gods Problem -->
+            <div class="section">
+                <h2>🌍 Part 2: The Many-Gods Problem</h2>
+                
+                <h3>The Evidence Landscape</h3>
+                <p>Every religion offers identical categories of "evidence":</p>
+                <ul style="margin: 15px 0 15px 30px; line-height: 2;">
+                    <li>📖 Ancient texts (Bible, Quran, Vedas, Book of Mormon...)</li>
+                    <li>👁️ Eyewitness testimony (written decades/centuries later)</li>
+                    <li>💫 Personal transformation stories</li>
+                    <li>🤔 Theological arguments</li>
+                    <li>✨ Miracle claims</li>
+                </ul>
+
+                <div class="probability-box">
+                    <div class="prob-value">1 / 4,000</div>
+                    <div class="prob-label">Your odds of picking the correct religion randomly</div>
+                </div>
+
+                <div class="probability-box" style="margin-left: 20px;">
+                    <div class="prob-value">0.025%</div>
+                    <div class="prob-label">Success rate of arbitrary faith</div>
+                </div>
+
+                <h3 style="margin-top: 30px;">The Fragmentation Problem</h3>
+                <p>Christianity alone has:</p>
+                <div class="comparison-grid">
+                    <div class="comparison-card">
+                        <div class="card-title" style="border-color: #ff9800; color: #ff9800;">
+                            45,000+ Denominations
+                        </div>
+                        <p>Catholic, Protestant, Orthodox, and thousands of subdivisions with incompatible doctrines</p>
+                    </div>
+                    <div class="comparison-card">
+                        <div class="card-title" style="border-color: #ff9800; color: #ff9800;">
+                            Endless Disputes
+                        </div>
+                        <p>If the text were clear divine communication, believers would converge. Instead: massive fragmentation.</p>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong>Strategic Conclusion:</strong> Internal disagreement among believers is itself evidence 
+                    against clear divine communication. Picking one interpretation arbitrarily compounds the error.
+                </div>
+            </div>
+
+            <!-- Bayesian Analysis -->
+            <div class="section">
+                <h2>📊 Part 3: The Bayesian Formalization</h2>
+                
+                <div class="bayesian-section">
+                    <h3>Step 1: Assign Priors (Initial Probabilities)</h3>
+                    <p>Without differentiating evidence, we must assign uniform priors:</p>
+                    <div class="equation">
+                        P(No God) ≈ P(Rational God) ≈ P(Arbitrary God) ≈ 33%
+                    </div>
+                    <p style="margin-top: 15px; color: #666;">
+                        Assigning higher probability to any specific deity without evidence is circular reasoning.
+                    </p>
+                </div>
+
+                <div class="bayesian-section">
+                    <h3>Step 2: Evaluate Evidence</h3>
+                    <p><strong>Observable Evidence (E):</strong> The universe operates on consistent, discoverable natural laws 
+                    that require reason to understand. No clear divine intervention or unambiguous revelation exists.</p>
+                    
+                    <table style="margin-top: 20px;">
+                        <tr>
+                            <th>Hypothesis</th>
+                            <th>Likelihood P(E|H)</th>
+                            <th>Explanation</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Rational God</strong></td>
+                            <td class="outcome-good">HIGH</td>
+                            <td>A god valuing reason would create laws demanding reason</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Arbitrary God</strong></td>
+                            <td class="outcome-bad">LOW</td>
+                            <td>Why have consistent laws if God is capricious?</td>
+                        </tr>
+                        <tr>
+                            <td><strong>No God</strong></td>
+                            <td class="outcome-neutral">MODERATE</td>
+                            <td>Consistent laws expected under naturalism</td>
+                        </tr>
+                    </table>
+
+                    <p style="margin-top: 20px; font-weight: 600;">
+                        By Bayes' Theorem: Observing E increases P(Rational God | E) and decreases P(Arbitrary God | E)
+                    </p>
+                </div>
+
+                <div class="bayesian-section">
+                    <h3>Step 3: The Utility Matrix</h3>
+                    <p style="margin-bottom: 20px;"><strong>Action A: Live by Evidence-Based Reasoning</strong></p>
+                    
+                    <table>
+                        <tr>
+                            <th>Scenario</th>
+                            <th>Prior P(H)</th>
+                            <th>Outcome</th>
+                            <th>Expected Utility</th>
+                        </tr>
+                        <tr>
+                            <td>No God</td>
+                            <td>~33%</td>
+                            <td>Maximized finite well-being, coherent life</td>
+                            <td class="outcome-good">Finite (Optimal)</td>
+                        </tr>
+                        <tr style="background: #c8e6c9;">
+                            <td><strong>Rational God</strong></td>
+                            <td>~33%</td>
+                            <td><strong>Rewarded for epistemic virtue</strong></td>
+                            <td class="outcome-good"><strong>∞ (INFINITE)</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Arbitrary God</td>
+                            <td>~33%</td>
+                            <td>No reliable optimization possible</td>
+                            <td class="outcome-neutral">Finite (Baseline)</td>
+                        </tr>
+                    </table>
+
+                    <div class="flow-arrow">⚔️ VS ⚔️</div>
+
+                    <p style="margin: 20px 0;"><strong>Action B: Arbitrarily Adopt Religious Faith</strong></p>
+                    
+                    <table>
+                        <tr>
+                            <th>Scenario</th>
+                            <th>Prior P(H)</th>
+                            <th>Outcome</th>
+                            <th>Expected Utility</th>
+                        </tr>
+                        <tr>
+                            <td>No God</td>
+                            <td>~33%</td>
+                            <td>Wasted effort, cognitive dissonance</td>
+                            <td class="outcome-bad">Finite (Suboptimal)</td>
+                        </tr>
+                        <tr style="background: #ffcdd2;">
+                            <td><strong>Rational God</strong></td>
+                            <td>~33%</td>
+                            <td><strong>Punished for epistemic vice</strong></td>
+                            <td class="outcome-bad"><strong>-∞ (NEG. INFINITE)</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Wrong Religion</td>
+                            <td>~33% × 99.975%</td>
+                            <td>Eternal punishment (most religions threaten this)</td>
+                            <td class="outcome-bad">-∞ or Near Zero</td>
+                        </tr>
+                        <tr>
+                            <td>Correct Religion</td>
+                            <td>~33% × 0.025%</td>
+                            <td>Infinite reward (but tiny probability)</td>
+                            <td class="outcome-neutral">~0.008% × ∞</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="conclusion-box" style="background: linear-gradient(135deg, #4caf50 0%, #45a049 100%); margin-top: 30px;">
+                    <h2>🎯 Dominant Strategy</h2>
+                    <p><strong>Evidence-Based Reasoning dominates Arbitrary Faith across all scenarios.</strong></p>
+                    <p style="margin-top: 15px;">When the only God worth optimizing for (Rational God) exists, 
+                    Reason yields infinite utility. When optimization is impossible or irrelevant, 
+                    Reason still maximizes finite outcomes.</p>
+                </div>
+            </div>
+
+            <!-- The Inverse Wager -->
+            <div class="section">
+                <h2>🔄 Part 4: The Inverse Wager</h2>
+                <p style="font-size: 1.1em; margin-bottom: 25px;">
+                    What if Pascal had it backwards? Consider this equally plausible scenario:
+                </p>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card" style="border: 3px solid #4caf50;">
+                        <div class="card-title card-reason">
+                            The Rational Deity Hypothesis
+                        </div>
+                        <ul class="outcome-list">
+                            <li><span class="emoji">✅</span> Heaven exists, Hell exists</li>
+                            <li><span class="emoji">🎓</span> Criterion: <strong>Intellectual integrity</strong></li>
+                            <li><span class="emoji">📊</span> Rewards: Evidence-based reasoning</li>
+                            <li><span class="emoji">⚖️</span> Punishes: Believing without evidence</li>
+                        </ul>
+                        <div style="margin-top: 20px; padding: 15px; background: #e8f5e9; border-radius: 8px;">
+                            <strong>Under this scenario:</strong><br>
+                            → Atheists/Agnostics go to Heaven ✓<br>
+                            → Theists go to Hell ✗
+                        </div>
+                    </div>
+
+                    <div class="comparison-card" style="border: 3px solid #f44336;">
+                        <div class="card-title card-faith">
+                            Pascal's Faith Hypothesis
+                        </div>
+                        <ul class="outcome-list">
+                            <li><span class="emoji">✅</span> Heaven exists, Hell exists</li>
+                            <li><span class="emoji">🙏</span> Criterion: <strong>Faith/Belief</strong></li>
+                            <li><span class="emoji">⛪</span> Rewards: Choosing correct religion</li>
+                            <li><span class="emoji">❌</span> Punishes: Non-belief OR wrong belief</li>
+                        </ul>
+                        <div style="margin-top: 20px; padding: 15px; background: #ffebee; border-radius: 8px;">
+                            <strong>Under this scenario:</strong><br>
+                            → Correct believers (0.025%) go to Heaven<br>
+                            → Everyone else (99.975%) goes to Hell
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box" style="margin-top: 30px;">
+                    <strong>Critical Question:</strong> Which hypothesis is more plausible given observable reality?
+                    <ul style="margin: 15px 0 0 30px; line-height: 2;">
+                        <li>Universe rewards empirical investigation ✓</li>
+                        <li>Consistent laws require reason to navigate ✓</li>
+                        <li>No clear evidence differentiates religions ✓</li>
+                        <li>Success of science and logic ✓</li>
+                    </ul>
+                    <p style="margin-top: 15px; font-size: 1.1em;">
+                        <strong>The Rational Deity hypothesis is at least as plausible—and better supported by evidence.</strong>
+                    </p>
+                </div>
+
+                <h3 style="margin-top: 40px;">Risk Comparison</h3>
+                <table>
+                    <tr>
+                        <th>Position</th>
+                        <th>If Rational God</th>
+                        <th>If Faith-Based God</th>
+                        <th>If No God</th>
+                        <th>Overall Risk</th>
+                    </tr>
+                    <tr style="background: #e8f5e9;">
+                        <td><strong>Evidentialist</strong></td>
+                        <td class="outcome-good">✓ Heaven (∞)</td>
+                        <td class="outcome-bad">✗ Hell (-∞)</td>
+                        <td class="outcome-good">✓ Optimal life</td>
+                        <td class="outcome-good"><strong>LOW</strong></td>
+                    </tr>
+                    <tr style="background: #ffebee;">
+                        <td><strong>Believer (Christianity)</strong></td>
+                        <td class="outcome-bad">✗ Hell (-∞)</td>
+                        <td class="outcome-neutral">0.025% Heaven</td>
+                        <td class="outcome-neutral">Suboptimal life</td>
+                        <td class="outcome-bad"><strong>HIGH</strong></td>
+                    </tr>
+                    <tr style="background: #ffebee;">
+                        <td><strong>Believer (Islam)</strong></td>
+                        <td class="outcome-bad">✗ Hell (-∞)</td>
+                        <td class="outcome-neutral">0.025% Heaven</td>
+                        <td class="outcome-neutral">Suboptimal life</td>
+                        <td class="outcome-bad"><strong>HIGH</strong></td>
+                    </tr>
+                    <tr style="background: #ffebee;">
+                        <td><strong>Believer (Any other)</strong></td>
+                        <td class="outcome-bad">✗ Hell (-∞)</td>
+                        <td class="outcome-neutral">0.025% Heaven</td>
+                        <td class="outcome-neutral">Suboptimal life</td>
+                        <td class="outcome-bad"><strong>HIGH</strong></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Euthyphro -->
+            <div class="section">
+                <h2>⚖️ Part 5: The Meta-Ethical Foundation</h2>
+                <p style="font-size: 1.1em; margin-bottom: 25px;">
+                    <strong>Objection:</strong> "But you need God for morality! Without divine command, 
+                    how can you have right and wrong?"
+                </p>
+
+                <h3>The Euthyphro Dilemma (Plato, ~400 BCE)</h3>
+                <div class="highlight-box" style="background: linear-gradient(135deg, #e1bee7 0%, #ce93d8 100%); border-color: #9c27b0;">
+                    <strong style="font-size: 1.3em;">Is something good because God commands it, 
+                    or does God command it because it is good?</strong>
+                </div>
+
+                <div class="comparison-grid" style="margin-top: 30px;">
+                    <div class="comparison-card">
+                        <div class="card-title" style="border-color: #f44336; color: #f44336;">
+                            Horn A: Good = God's Command
+                        </div>
+                        <p><strong>If morality is defined by God's commands:</strong></p>
+                        <ul style="margin: 15px 0 15px 20px; line-height: 2;">
+                            <li>Morality becomes arbitrary</li>
+                            <li>God could command "torture babies" → it would be good</li>
+                            <li>"Good God" becomes meaningless</li>
+                            <li>No standard to evaluate God's commands</li>
+                        </ul>
+                        <div style="margin-top: 20px; padding: 15px; background: #ffebee; border-radius: 8px; font-weight: 600;">
+                            This undermines "Good God" concept entirely → back to "Arbitrary God" branch
+                        </div>
+                    </div>
+
+                    <div class="comparison-card">
+                        <div class="card-title" style="border-color: #4caf50; color: #4caf50;">
+                            Horn B: God Commands What's Good
+                        </div>
+                        <p><strong>If God recognizes independent moral truths:</strong></p>
+                        <ul style="margin: 15px 0 15px 20px; line-height: 2;">
+                            <li>Morality exists independently of God</li>
+                            <li>Grounded in reason, logic, well-being</li>
+                            <li>Accessible through rational inquiry</li>
+                            <li>We can evaluate alleged divine commands</li>
+                        </ul>
+                        <div style="margin-top: 20px; padding: 15px; background: #e8f5e9; border-radius: 8px; font-weight: 600;">
+                            Reason is sovereign → we don't need faith to access moral truth
+                        </div>
+                    </div>
+                </div>
+
+                <div class="conclusion-box" style="margin-top: 40px;">
+                    <h2>🎯 The Recursion</h2>
+                    <p style="font-size: 1.3em; line-height: 1.8;">
+                        <strong>Either way, reason is epistemically prior to faith.</strong>
+                    </p>
+                    <p style="margin-top: 20px;">
+                        You need reason to evaluate:<br>
+                        • Whether an alleged revelation is genuine<br>
+                        • Whether it's from a good God or bad entity<br>
+                        • Whether your interpretation is correct<br>
+                        • Whether the moral command aligns with justice
+                    </p>
+                    <p style="margin-top: 20px; font-size: 1.2em; font-weight: bold;">
+                        You cannot escape the sovereignty of reason by appealing to divine command—
+                        you need reason to determine if the command is legitimate in the first place.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Final Conclusion -->
+            <div class="section">
+                <h2>🏆 Part 6: The Complete Solution</h2>
+                
+                <h3>What We've Proven:</h3>
+                <div style="background: white; padding: 25px; border-radius: 10px; margin: 20px 0;">
+                    <table style="box-shadow: none;">
+                        <tr>
+                            <th style="width: 40%;">Framework</th>
+                            <th>Conclusion</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Decision Tree Analysis</strong></td>
+                            <td>Only "Good God" matters → Good God values reason</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Many-Gods Problem</strong></td>
+                            <td>Can't pick one from 4,000 without evidence</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bayesian Analysis</strong></td>
+                            <td>Evidence favors Rational God; Reason maximizes EU</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Inverse Wager</strong></td>
+                            <td>Evidentialist has better odds than arbitrary believer</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Euthyphro Dilemma</strong></td>
+                            <td>Reason is sovereign regardless of God's existence</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="conclusion-box" style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); padding: 50px;">
+                    <h2 style="font-size: 3em; margin-bottom: 30px;">♟️ Checkmate</h2>
+                    <p style="font-size: 1.4em; line-height: 2;">
+                        <strong>Evidence-based agnosticism is:</strong>
+                    </p>
+                    <ul style="list-style: none; font-size: 1.2em; margin-top: 20px; line-height: 2;">
+                        <li>✅ <strong>Epistemically rational</strong> (proportioning belief to evidence)</li>
+                        <li>✅ <strong>Strategically dominant</strong> (maximizes expected utility)</li>
+                        <li>✅ <strong>Self-justifying</strong> (the method selects for itself)</li>
+                        <li>✅ <strong>Stable</strong> (no revision needed unless evidence changes)</li>
+                    </ul>
+                    <p style="font-size: 1.3em; margin-top: 30px; font-weight: bold;">
+                        If there is a good God, this is exactly what they would want.
+                    </p>
+                    <p style="font-size: 1.1em; margin-top: 20px; font-style: italic;">
+                        The rational default: Withhold belief until evidence warrants otherwise.
+                    </p>
+                </div>
+
+                <div class="highlight-box" style="margin-top: 40px; background: linear-gradient(135deg, #fff9c4 0%, #fff59d 100%);">
+                    <p style="font-size: 1.2em; text-align: center; font-weight: 600;">
+                        <strong>The believer picked one mythology from thousands based on birth location.</strong><br>
+                        <strong>The evidentialist said: "Show me evidence."</strong><br><br>
+                        <span style="font-size: 1.3em; color: #2a5298;">
+                            If judgment day comes, my odds are better than yours. ♟️
+                        </span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Interactive Section -->
+            <div class="section" style="background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);">
+                <h2>🎮 Test The Framework</h2>
+                <p style="margin-bottom: 25px;">Click scenarios to see how the framework handles them:</p>
+                
+                <div>
+                    <button class="interactive-button" onclick="toggleScenario('personal-exp')">
+                        "But I've had a personal experience!"
+                    </button>
+                    <button class="interactive-button" onclick="toggleScenario('faith-virtue')">
+                        "Faith itself is a virtue!"
+                    </button>
+                    <button class="interactive-button" onclick="toggleScenario('cant-prove')">
+                        "You can't prove God doesn't exist!"
+                    </button>
+                </div>
+
+                <div id="personal-exp" class="hidden" style="margin-top: 25px; padding: 25px; background: white; border-radius: 10px;">
+                    <h3 style="color: #667eea;">Response: Personal Experience</h3>
+                    <p><strong>The Problem:</strong> Every religion has believers with identical-quality personal experiences. Muslims have powerful spiritual experiences. Hindus have profound revelations. Mormons receive burning confirmations in their bosom.</p>
+                    <p style="margin-top: 15px;"><strong>The Framework:</strong> Personal experience doesn't differentiate between contradictory claims. If every religion produces the same experiential evidence, it's not evidence for any specific religion—it's evidence that humans have religious experiences.</p>
+                    <p style="margin-top: 15px; font-weight: 600;">Your personal experience is indistinguishable from the personal experiences that lead people to contradictory conclusions. This is not sufficient evidence.</p>
+                </div>
+
+                <div id="faith-virtue" class="hidden" style="margin-top: 25px; padding: 25px; background: white; border-radius: 10px;">
+                    <h3 style="color: #667eea;">Response: Faith As Virtue</h3>
+                    <p><strong>The Claim:</strong> Faith—believing without evidence—is itself a virtue that God rewards.</p>
+                    <p style="margin-top: 15px;"><strong>The Problem:</strong> This is circular reasoning. You're saying "God rewards faith" as justification for faith, but you need evidence that this claim is true.</p>
+                    <p style="margin-top: 15px;"><strong>The Framework:</strong> If faith is a virtue, then the Muslim's faith is as virtuous as the Christian's. But they lead to contradictory conclusions. A "virtue" that reliably leads people to contradictory falsehoods is not a virtue—it's a vice.</p>
+                    <p style="margin-top: 15px; font-weight: 600;">The Rational God hypothesis makes more sense: intellectual integrity is the virtue, and any God worth respecting would value truth-seeking over belief-without-evidence.</p>
+                </div>
+
+                <div id="cant-prove" class="hidden" style="margin-top: 25px; padding: 25px; background: white; border-radius: 10px;">
+                    <h3 style="color: #667eea;">Response: Burden of Proof</h3>
+                    <p><strong>The Claim:</strong> "You can't prove God doesn't exist, so you should believe just in case!"</p>
+                    <p style="margin-top: 15px;"><strong>The Problem:</strong> This misunderstands burden of proof. I can't prove invisible dragons don't live in your garage either.</p>
+                    <p style="margin-top: 15px;"><strong>The Framework:</strong> The question isn't "Can you prove God doesn't exist?" It's "What's the rational position given the available evidence?"</p>
+                    <ul style="margin: 15px 0 0 30px; line-height: 2;">
+                        <li>No differentiating evidence between thousands of god-claims</li>
+                        <li>Observable reality favors rationality over faith</li>
+                        <li>Expected utility maximized by evidence-following</li>
+                    </ul>
+                    <p style="margin-top: 15px; font-weight: 600;">I don't need to prove God doesn't exist. I just need to show that agnosticism is the rational default—and I have.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function toggleScenario(id) {
+            const element = document.getElementById(id);
+            const allScenarios = document.querySelectorAll('[id$="-exp"], [id$="-virtue"], [id$="-prove"]');
+            
+            // Hide all other scenarios
+            allScenarios.forEach(scenario => {
+                if (scenario.id !== id) {
+                    scenario.classList.add('hidden');
+                }
+            });
+            
+            // Toggle the clicked scenario
+            element.classList.toggle('hidden');
+        }
+
+        // Add hover effects to decision tree nodes
+        document.querySelectorAll('.tree-node').forEach(node => {
+            node.addEventListener('click', function() {
+                this.style.transform = 'scale(1.02)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 200);
+            });
+        });
+    </script>
+</body>
+</html>
